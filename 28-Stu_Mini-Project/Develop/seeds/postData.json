@@ -1,0 +1,33 @@
+[
+    {
+      "title": "First Post",
+      "body": "This is the body of the first post.",
+      "userId": 1
+    },
+    {
+      "title": "Second Post",
+      "body": "This is the body of the second post.",
+      "userId": 1
+    },
+    {
+      "title": "Third Post",
+      "body": "This is the body of the third post.",
+      "userId": 2
+    },
+    {
+      "title": "First Post",
+      "body": "This is the body of the first post.",
+      "userId": 1
+    },
+    {
+      "title": "Second Post",
+      "body": "This is the body of the second post.",
+      "userId": 1
+    },
+    {
+      "title": "Third Post",
+      "body": "This is the body of the third post.",
+      "userId": 2
+    }
+  ]
+  
