@@ -5,6 +5,13 @@ class Comment extends Model {}
 
 Comment.init(
   {
+    comment_author: {
+        type: DataTypes.INTEGER,
+        references: {
+          model: "user",
+          key: "id",
+        },
+      },
     id: {
       type: DataTypes.UUID,
       defaultValue: DataTypes.UUIDV4,
@@ -25,7 +32,14 @@ Comment.init(
       type: DataTypes.INTEGER,
       defaultValue: 0,
       allowNull: false,
-    },
+    }, 
+    blog_id: {
+        type: DataTypes.INTEGER,
+        references: {
+          model: "blog_post",
+          key: "id",
+        },
+      },
   },
   {
     sequelize,

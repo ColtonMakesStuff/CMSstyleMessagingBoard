@@ -24,10 +24,17 @@ Post.init(
       type: DataTypes.STRING,
       allowNull: true,
     },
+    blog_author: {
+        type: DataTypes.INTEGER,
+        references: {
+          model: "user",
+          key: "id",
+        },
+      },
   },
   {
     sequelize,
-    modelName: 'Post',
+    modelName: 'post',
   }
 );
 
