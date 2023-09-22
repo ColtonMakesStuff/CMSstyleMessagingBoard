@@ -1,37 +1,19 @@
-const { BlogPost } = require("../models");
+const { Post } = require("../models");
 
-const blogPostData = [
-    {
-      "title": "First Post",
-      "body": "This is the body of the first post.",
-      "userId": 1
-    },
-    {
-      "title": "Second Post",
-      "body": "This is the body of the second post.",
-      "userId": 1
-    },
-    {
-      "title": "Third Post",
-      "body": "This is the body of the third post.",
-      "userId": 2
-    },
-    {
-      "title": "Fourth Post",
-      "body": "This is the body of the fourth post.",
-      "userId": 1
-    },
-    {
-      "title": "Fifth Post",
-      "body": "This is the body of the fifth post.",
-      "userId": 1
-    },
-    {
-      "title": "Sixth Post",
-      "body": "This is the body of the sixth post.",
-      "userId": 2
-    }
-  ]
-  const seedBlogPosts = () => BlogPost.bulkCreate(blogPostData);
+const postSeedData = [
+  {
+    title: 'First Post',
+    body: 'This is the first post',
+    user_id: 1,
+  },
+  {
+    title: 'Second Post',
+    body: 'This is the second post',
+    user_id: 2,
+  },
+  // Add more post objects as needed
+];
+
+  const seedBlogPosts = () => Post.bulkCreate(postSeedData);
 
 module.exports = seedBlogPosts;

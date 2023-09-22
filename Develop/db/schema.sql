@@ -1,2 +1,2 @@
-DROP DATABASE IF EXISTS messageBorad_db;
-CREATE DATABASE messageBorad_db;
+DROP DATABASE IF EXISTS messageBoard_db;
+CREATE DATABASE messageBoard_db;

@@ -5,20 +5,19 @@ class Comment extends Model {}
 
 Comment.init(
   {
-    comment_author: {
+    user_id: {
         type: DataTypes.INTEGER,
         references: {
-          model: "user",
-          key: "id",
+          model: 'user',
+          key: 'id',
         },
       },
-    id: {
-      type: DataTypes.UUID,
-      defaultValue: DataTypes.UUIDV4,
-      primaryKey: true,
-      allowNull: false,
-      unique: true,
-    },
+      id: {
+        type: DataTypes.INTEGER,
+        allowNull: false,
+        primaryKey: true,
+        autoIncrement: true,
+      },
     body: {
       type: DataTypes.TEXT,
       allowNull: false,
@@ -33,17 +32,19 @@ Comment.init(
       defaultValue: 0,
       allowNull: false,
     }, 
-    blog_id: {
+    post_id: {
         type: DataTypes.INTEGER,
         references: {
-          model: "blog_post",
-          key: "id",
+          model: 'post',
+          key: 'id',
         },
       },
   },
   {
     sequelize,
-    modelName: 'Comment',
+    timestamps: true,
+    freezeTableName: true,
+    modelName: 'comment',
   }
 );
 

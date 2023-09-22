@@ -6,11 +6,10 @@ class Post extends Model {}
 Post.init(
   {
     id: {
-      type: DataTypes.UUID,
-      defaultValue: DataTypes.UUIDV4,
-      primaryKey: true,
+      type: DataTypes.INTEGER,
       allowNull: false,
-      unique: true,
+      primaryKey: true,
+      autoIncrement: true,
     },
     title: {
       type: DataTypes.STRING,
@@ -20,20 +19,18 @@ Post.init(
       type: DataTypes.TEXT,
       allowNull: false,
     },
-    callToAction: {
-      type: DataTypes.STRING,
-      allowNull: true,
-    },
-    blog_author: {
+    user_id: {
         type: DataTypes.INTEGER,
         references: {
-          model: "user",
-          key: "id",
+          model: 'user',
+          key: 'id',
         },
       },
   },
   {
     sequelize,
+    timestamps: true,
+    freezeTableName: true,
     modelName: 'post',
   }
 );
