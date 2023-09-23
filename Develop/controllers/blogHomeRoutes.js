@@ -3,38 +3,62 @@ const { Post, User, Comment } = require('../models');
 
 
 const loggedInMiddleware = (req, res, next) => {
-  if (!req.session.loggedIn) {
-    res.redirect('/login');
-  } else {
+  // if (!req.session.loggedIn) {
+  //   res.redirect('/login');
+  // } else {
     next();
   }
-};
+// };
+loggedInMiddleware
 
-router.get('/', loggedInMiddleware, async (req, res) => {
+
+router.get('/', async (req, res) => {
   try {
+    console.log("trying");
     const postData = await Post.findAll({
       include: [
         {
           model: User,
-          attributes: ['name'],
+          as: 'user',
+          attributes: ['name', 'email'],
+        },
+        {
+          model: Comment,
+          as: 'post_comments',
+          attributes: ['body'],
+          include: [
+            {
+              model: User,
+              as: 'user',
+              attributes: ['name', 'email'],
+            },]
         },
       ],
     });
-    const posts = postData.map((posts) =>
-    posts.get({ plain: true })
-  );
-    // Handle the retrieved data
-    console.log(postData)
+
+    const posts = postData.map((post) => post.get({ plain: true }));
+    console.log(posts);
+
     res.render('homepage', {
-posts
-    })
+      posts,
+    });
   } catch (error) {
     console.error(error);
     res.status(500).json({ error: 'Internal Server Error' });
-    
   }
 });
 
+    
+// {
+//   model: Comment,
+//   as: 'post_comments', 
+//   attributes: ['body', 'user_id' ],
+//   include: {
+//     model: User,
+//     as: 'user', // Specify the alias for the User association
+//     attributes: ['name'],
+//   },
+// },
 
 router.post('/', async (req, res) => {
   try {
