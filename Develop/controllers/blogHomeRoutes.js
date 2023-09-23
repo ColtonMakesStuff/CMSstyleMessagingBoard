@@ -48,7 +48,36 @@ router.get('/', async (req, res) => {
   }
 });
 
-    
+
+router.post('/newPost',async (req, res) => {
+  try {
+    const { title, body, user_id } = req.body;
+
+    // Create a new post
+    const post = await Post.create({ title, body, user_id });
+
+    res.status(201).json(post);
+  } catch (error) {
+    console.error(error);
+    res.status(500).json({ message: 'Server Error' });
+  }
+})
+
+
+
+router.post('/newComment',async (req, res) => {
+  try {
+    const { user_id, body, post_id} = req.body;
+
+    // Create a new comment
+    const post = await Comment.create({ user_id, body, post_id });
+
+    res.status(201).json(post);
+  } catch (error) {
+    console.error(error);
+    res.status(500).json({ message: 'Server Error' });
+  }
+})
 // {
 //   model: Comment,
 //   as: 'post_comments', 
